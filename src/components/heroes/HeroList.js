@@ -1,58 +1,61 @@
+import React, { useEffect, useRef } from 'react'
+import useIntersectionScreen from '../../hooks/useIntersectionScreen'
+import { Spinner } from '../spinner/Spinner'
+import { HeroCard } from './HeroCard'
+import { useCharacters } from '../../hooks/useCharacters'
+import { Search } from '../search/Search'
+import PropTypes from 'prop-types'
 
-import React, {useCallback, useEffect, useRef} from 'react';
-//import useIntersectionScreen from '../../hooks/useIntersectionScreen';
-import { Spinner } from '../spinner/Spinner';
-import { HeroCard } from './HeroCard';
-//import {debounce} from 'just-debounce-it';
-//import { useCharacters } from '../../hooks/useCharacters';
-import { useFetch } from '../../hooks/useFetch';
-import {API_KEY, API_URL, LIMIT, TS, HASH} from '../../services/settings';
+export const HeroList = ({ page = 0, character = '' }) => {
+  const { loading, characters, setPage } = useCharacters({ character })
+  const externalRef = useRef()
+  const { isIntersect } = useIntersectionScreen({ externalRef: loading ? null : externalRef, once: false })
+  useEffect(() => {
+    if (isIntersect) {
+      setPage(prevPage => prevPage + 1)
+    }
+  }, [isIntersect, setPage])
 
+  return (
 
-export const HeroList = (page = 0) => {
-  
-    const apiUrl = `${API_URL}?ts=${TS}&apikey=${API_KEY}&hash=${HASH}&limit=${LIMIT}&offset=${page * LIMIT}`;
-   // const { loading, characters, setPage } = useCharacters({})
-
-   const {loading, data} = useFetch(apiUrl)
-   
-   const {results} = !!data && data.data
-    const externalRef = useRef();
-    //const {isNearScreen } = useIntersectionScreen({externalRef: loading ? false : externalRef, once: false})
-   
-   
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    /* const debounceHandleNextPage = useCallback(debounce(
-        () => setPage(prevPage => prevPage + 1), 200
-      ), [setPage])
-   
-
-    useEffect(() => {
-        if(isNearScreen) debounceHandleNextPage();
-        
-    }, [debounceHandleNextPage, isNearScreen]); */
-
-    return (
-        
         <>
+
+              <>
+                <div className="container-fluid mt-3">
+                    <h1 className="display-4 text-center">Characters</h1>
+                    <div className="container mt-4">
+                        <div className="col-12">
+                            <Search />
+                        </div>
+                    </div>
+                </div>
+            </>
             {
                 loading
-                ?
-                (
+                  ? (
                     <Spinner/>
                     )
-                    :(
+                  : (
+                        <>
                             <div className="card-columns animate__animated animate__fadeIn">
-                                {results.map( hero => (
-                                    <HeroCard 
-                                        key={hero.id}  
-                                        {...hero}
-                                    /> 
+                                {characters.results.map(hero => (
+                                    <HeroCard
+                                    key={hero.id}
+                                    {...hero}
+                                    />
                                 ))}
-                                <div id="observer" ref={externalRef}></div>
                             </div>
-                )
+                            { <div ref={externalRef}></div>}
+                                <Spinner/>
+                        </>
+
+                    )
             }
         </>
-    )
+  )
+}
+
+HeroList.propTypes = {
+  page: PropTypes.number,
+  character: PropTypes.string
 }

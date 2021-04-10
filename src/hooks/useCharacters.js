@@ -1,38 +1,42 @@
-import { useContext, useEffect, useState } from 'react';
-import { getCharacters } from '../services/getCharacters';
-import { CharactersContext } from '../context/CharactersContext';
+import { useEffect, useState } from 'react'
+// import { useParams } from 'react-router-dom'
+import { getCharacters } from '../services/getCharacters'
 
-const INITIAL_PAGE = 0; 
+export const useCharacters = ({ character }) => {
+  const [loading, setLoading] = useState(true)
+  const [loadingNextPage, setLoadingNextPage] = useState(false)
 
-export const useCharacters = () => {
+  const [page, setPage] = useState(0)
 
-    const [loading, setLoading] = useState(false); 
-    const [loadingNextPage, setLoadingNextPage] = useState(false); 
+  const [characters, setCharacters] = useState([])
 
-    const [page, setPage] = useState(INITIAL_PAGE);
-    const [characters, setCharacters] = useContext({CharactersContext}); 
+  // const { q } = useParams()
+  // console.log(q)
+  useEffect(() => {
+    getCharacters({ character })
+      .then(characters => {
+        setCharacters(characters)
+        setLoading(false)
+      })
+  }, [!characters.length])
 
-    useEffect (() => { 
-        setLoading(true); 
-        getCharacters({})
-         .then(characters => {
-             setCharacters(characters)
-             setLoading(false)
-         })
-    }, [setCharacters])
+  useEffect(() => {
+    if (page === 0) return
+    setLoadingNextPage(true)
+    getCharacters({ page })
+      .then(data => {
+        setCharacters(prevCharacters => ({
+          ...data,
+          results: prevCharacters.results.concat(data.results)
+        }))
+        setLoadingNextPage(false)
+      })
+  }, [page, setCharacters])
 
-
-    useEffect(()=> {
-        if (page === INITIAL_PAGE) return
-        setLoadingNextPage(true)
-
-        getCharacters({page})
-            .then(nextCharcters => {
-                setCharacters(prevCharacters => prevCharacters.concat(nextCharcters))
-                setLoadingNextPage(false)
-            })
-    }, [page, setCharacters])
-
-
-    return {loading, loadingNextPage, characters, setPage}
+  return {
+    loading,
+    loadingNextPage,
+    characters,
+    setPage
+  }
 }

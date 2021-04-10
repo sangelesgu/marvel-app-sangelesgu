@@ -1,12 +1,11 @@
 import React from 'react'
 import { AppRouter } from './routers/AppRouter'
-import './MarvelApp.css';
-
+import './MarvelApp.css'
 
 export const MarvelApp = () => {
-    return (
+  return (
         <div>
           <AppRouter />
         </div>
-    )
+  )
 }
