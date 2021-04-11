@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-// import { useParams } from 'react-router-dom'
 import { getCharacters } from '../services/getCharacters'
 
-export const useCharacters = ({ character }) => {
+export const useCharacters = () => {
   const [loading, setLoading] = useState(true)
   const [loadingNextPage, setLoadingNextPage] = useState(false)
 
@@ -10,15 +9,13 @@ export const useCharacters = ({ character }) => {
 
   const [characters, setCharacters] = useState([])
 
-  // const { q } = useParams()
-  // console.log(q)
   useEffect(() => {
-    getCharacters({ character })
+    getCharacters({})
       .then(characters => {
         setCharacters(characters)
         setLoading(false)
       })
-  }, [!characters.length])
+  }, [])
 
   useEffect(() => {
     if (page === 0) return

@@ -5,10 +5,13 @@
 }
 
 .search input {
-  width: 450px;
-  height: 38px;
+ 
+  border: 1px solid #aaa;
+  border-radius: 7px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+}
 
-  background: #fcfcfc;
+.select  {
   border: 1px solid #aaa;
   border-radius: 7px;
   box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;

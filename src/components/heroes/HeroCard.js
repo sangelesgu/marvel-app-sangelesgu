@@ -7,10 +7,9 @@ export const HeroCard = ({ id, name, thumbnail }) => {
                 <div className="container-fluid">
                     <Link to={`./characters/${id}`} className="my-card">
                         <img
-                            className="img img-responsive"
+                            className="img"
                             alt={name}
                             src={`${thumbnail.path}.${thumbnail.extension}`}
-                        // onError={notFoundSrc}
                         />
                         <div className="profile-name">{name}</div>
                     </Link>

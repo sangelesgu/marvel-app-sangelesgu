@@ -5,7 +5,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
-import { HeroList } from '../components/heroes/HeroList'
 import { DahboardRoutes } from './DahboardRoutes'
 
 export const AppRouter = () => {
@@ -13,7 +12,6 @@ export const AppRouter = () => {
             <Router>
                 <div>
                     <Switch>
-                        <Route exact path="/charcters" component={HeroList} />
                         <Route path="/" component={DahboardRoutes} />
                     </Switch>
                 </div>

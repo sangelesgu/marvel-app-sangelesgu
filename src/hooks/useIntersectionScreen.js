@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 
-export default function useIntersectionScreen ({ distance = '100px', externalRef, once = true } = {}) {
+export default function useIntersectionScreen ({ distance = '200px', externalRef, once = true } = {}) {
   const [isIntersect, setShow] = useState(false)
   const fromRef = useRef()
 

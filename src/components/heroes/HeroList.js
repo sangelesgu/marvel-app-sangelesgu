@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import useIntersectionScreen from '../../hooks/useIntersectionScreen'
 import { Spinner } from '../spinner/Spinner'
 import { HeroCard } from './HeroCard'
-import { useCharacters } from '../../hooks/useCharacters'
 import { Search } from '../search/Search'
 import PropTypes from 'prop-types'
+import { charactersContext } from '../../contexts/CharactersContext'
 
 export const HeroList = ({ page = 0, character = '' }) => {
-  const { loading, characters, setPage } = useCharacters({ character })
+  const context = useContext(charactersContext)
+  const { characters, loading, setPage } = context
   const externalRef = useRef()
   const { isIntersect } = useIntersectionScreen({ externalRef: loading ? null : externalRef, once: false })
   useEffect(() => {
@@ -46,7 +47,7 @@ export const HeroList = ({ page = 0, character = '' }) => {
                                 ))}
                             </div>
                             { <div ref={externalRef}></div>}
-                                <Spinner/>
+                            <Spinner/>
                         </>
 
                     )

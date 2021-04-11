@@ -5,17 +5,21 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { useSearch } from '../../hooks/useSearch'
 import './styles/Search.css'
 
-export const Search = () => {
+export const Search = ({ setCharacter }) => {
   const location = useLocation()
   const { q = '' } = queryString.parse(location.search)
   const history = useHistory()
+
+  // const [name, setName] = useState('')
 
   const [formValues, handleInputChange] = useSearch({ searchText: q })
 
   const { searchText } = formValues
   const handleSearch = (e) => {
     e.preventDefault()
-    history.push(`?=${searchText}`)
+    if (searchText !== '') {
+      history.push(`search/${searchText}`)
+    }
   }
 
   return (
@@ -33,19 +37,15 @@ export const Search = () => {
                                         name="searchText"
                                         value={searchText}
                                         onChange={handleInputChange}
-
                                     />
                                 </form>
                             </div>
                         </div>
-                        <div className="col-3">
-                            <select className="custom-select my-1 mr-sm-2">
-                                <option></option>
-                            </select>
-                        </div>
-                        <div className="col-3">
-                            <select className="custom-select my-1 mr-sm-2">
-                                <option></option>
+                        <div className="col-6">
+                            <select className="select custom-select">
+                                <option disabled selected>Order by</option>
+                                <option value={'name'}>Name A - Z</option>
+                                <option value={'-name'}>Name Z - A</option>
                             </select>
                         </div>
                     </div>
