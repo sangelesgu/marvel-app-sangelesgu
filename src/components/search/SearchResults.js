@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSearchCharacters } from '../../hooks/useSearchCharacter'
+import { ErrorSearch } from '../../nofound/ErrorSearch'
 import { HeroCard } from '../heroes/HeroCard'
 import { Spinner } from '../spinner/Spinner'
 import { Search } from './Search'
@@ -25,8 +26,11 @@ export const SearchResults = () => {
                 <Spinner/>
                 )
               : (
+                  characters.results.length === 0
+                    ? (<ErrorSearch />)
+                    : (
                     <>
-                        <div className="card-columns animate__animated animate__fadeIn">
+                        <div className="container card-columns animate__animated animate__fadeIn">
                             {characters.results.map(hero => (
                                 <HeroCard
                                 key={hero.id}
@@ -34,7 +38,7 @@ export const SearchResults = () => {
                                 />
                             ))}
                         </div>
-                    </>
+                    </>)
 
                 )
           }

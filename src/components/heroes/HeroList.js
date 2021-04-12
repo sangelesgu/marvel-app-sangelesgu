@@ -6,7 +6,7 @@ import { Search } from '../search/Search'
 import PropTypes from 'prop-types'
 import { charactersContext } from '../../contexts/CharactersContext'
 
-export const HeroList = ({ page = 0, character = '' }) => {
+export const HeroList = () => {
   const context = useContext(charactersContext)
   const { characters, loading, setPage } = context
   const externalRef = useRef()
@@ -38,7 +38,7 @@ export const HeroList = ({ page = 0, character = '' }) => {
                     )
                   : (
                         <>
-                            <div className="card-columns animate__animated animate__fadeIn">
+                            <div className="container text-center card-columns animate__animated animate__fadeIn mt-3">
                                 {characters.results.map(hero => (
                                     <HeroCard
                                     key={hero.id}

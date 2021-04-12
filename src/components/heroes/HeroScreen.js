@@ -36,6 +36,9 @@ export const HeroScreen = ({ history }) => {
                                             <p className="font-italic mb-0">{character.description}</p>
                                         </blockquote>
 
+                                        <ul>
+                                        </ul>
+
                                         <button className="btn btn-outline-danger"
                                             onClick={handleReturn}>
                                          <b>Back</b>

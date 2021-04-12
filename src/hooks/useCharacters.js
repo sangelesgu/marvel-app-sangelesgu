@@ -9,11 +9,28 @@ export const useCharacters = () => {
 
   const [characters, setCharacters] = useState([])
 
+  const [charactersFiltered, setCharactersFiltered] = useState([])
+
+  /* const [nameStartsWith, setNameStartsWith] = useState([]) */
+
+  const [filter, setFiltered] = useState('')
+
   useEffect(() => {
     getCharacters({})
       .then(characters => {
         setCharacters(characters)
         setLoading(false)
+      })
+  }, [])
+
+  useEffect(() => {
+    if (filter === '') return
+    console.log(filter)
+    setLoading(true)
+    getCharacters({ filter })
+      .then(characters => {
+        setLoading(false)
+        setCharactersFiltered(characters)
       })
   }, [])
 
@@ -34,6 +51,8 @@ export const useCharacters = () => {
     loading,
     loadingNextPage,
     characters,
-    setPage
+    setPage,
+    setFiltered,
+    charactersFiltered
   }
 }

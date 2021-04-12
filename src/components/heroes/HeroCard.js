@@ -4,8 +4,7 @@ import './styles/HeroCard.css'
 import PropTypes from 'prop-types'
 export const HeroCard = ({ id, name, thumbnail }) => {
   return (
-                <div className="container-fluid">
-                    <Link to={`./characters/${id}`} className="my-card">
+                    <Link to={`/characters/${id}`} className="my-card">
                         <img
                             className="img"
                             alt={name}
@@ -13,7 +12,6 @@ export const HeroCard = ({ id, name, thumbnail }) => {
                         />
                         <div className="profile-name">{name}</div>
                     </Link>
-                </div>
   )
 }
 

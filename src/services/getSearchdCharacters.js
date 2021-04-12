@@ -1,4 +1,4 @@
-import { API_KEY, API_URL, LIMIT, TS, HASH } from './settings'
+import { API_KEY, API_URL, TS, HASH } from './settings'
 
 const foundCharacters = resp => {
   const { data } = resp
@@ -7,7 +7,7 @@ const foundCharacters = resp => {
 }
 
 export const getSearchdCharacters = async ({ name } = {}) => {
-  const apiUrl = `${API_URL}?ts=${TS}&nameStartsWith=${name}&apikey=${API_KEY}&hash=${HASH}&limit=${LIMIT}`
+  const apiUrl = `${API_URL}?ts=${TS}&nameStartsWith=${name}&apikey=${API_KEY}&hash=${HASH}`
   return fetch(apiUrl)
     .then((res) => res.json())
     .then(foundCharacters)

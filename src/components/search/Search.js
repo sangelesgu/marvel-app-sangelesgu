@@ -1,11 +1,12 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import queryString from 'query-string'
 import { useHistory, useLocation } from 'react-router-dom'
 import { useSearch } from '../../hooks/useSearch'
 import './styles/Search.css'
+import { charactersContext } from '../../contexts/CharactersContext'
 
-export const Search = ({ setCharacter }) => {
+export const Search = () => {
   const location = useLocation()
   const { q = '' } = queryString.parse(location.search)
   const history = useHistory()
@@ -14,14 +15,20 @@ export const Search = ({ setCharacter }) => {
 
   const [formValues, handleInputChange] = useSearch({ searchText: q })
 
+  const context = useContext(charactersContext)
+  const { setFiltered, filter } = context
   const { searchText } = formValues
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
+    history.replace('/search')
     e.preventDefault()
-    if (searchText !== '') {
-      history.push(`search/${searchText}`)
-    }
+    console.log(location.pathname)
+    if (searchText !== '') history.push(`search/${searchText}`)
   }
-
+  const handleSelect = e => {
+    const order = e.target.value
+    setFiltered(() => setFiltered(order))
+    console.log(filter)
+  }
   return (
             <div className="container mt-2">
                     <div className="row">
@@ -42,9 +49,9 @@ export const Search = ({ setCharacter }) => {
                             </div>
                         </div>
                         <div className="col-6">
-                            <select className="select custom-select">
-                                <option disabled selected>Order by</option>
-                                <option value={'name'}>Name A - Z</option>
+                            <select className="select custom-select" onChange={handleSelect}>
+                                <option defaultValue>Order by</option>
+                                <option value={'name'}> Name A - Z</option>
                                 <option value={'-name'}>Name Z - A</option>
                             </select>
                         </div>
