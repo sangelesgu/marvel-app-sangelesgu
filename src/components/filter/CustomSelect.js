@@ -17,7 +17,7 @@ export const CustomSelect = ({ initialOrder = '' }) => {
   }, [sortBy])
   return (
     <>
-      <select className="select custom-select" value={ sortBy } onChange={handleSelect}>
+      <select className="custom-select" value={ sortBy } onChange={handleSelect}>
          {orderBy.map(sort => (
             <option key={sort.label} value={sort.value}>
               {sort.label}
