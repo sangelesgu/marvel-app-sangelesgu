@@ -1,14 +1,20 @@
 
 <h1>Marvel</h1>
+
+
+https://github.com/sangelesgu/marvel-app-sangelesgu/blob/main/public/Hnet-image.gif
+
+
+
 Single Page Aplication of Marvel's characters created with Reatc, clean architecture, mobile first and cosuming data from Marvel Public REST API. 
 
 As for deployment, I used Vercel since it integrates perfectly with git and facilitates using cli for continuous integration.
 
-See demo here: 
+[See demo here](https://marvel-app-react-beezy-code-challenge-4bv7ha0zw-sangelesgu.vercel.app/characters)
 
 # Getting Started  
 
-The SPA get data from Marvel's public Api.  You can check the Api's manual in:  "https://developer.marvel.com/docs#!/public/getComicsCollection_get_6"
+The SPA get data from Marvel's public Api.  You can check the Api's manual [here](https://developer.marvel.com/docs#!/public/getComicsCollection_get_6)
 
 # Built With
  - React
