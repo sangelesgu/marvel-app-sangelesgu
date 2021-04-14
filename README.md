@@ -8,7 +8,7 @@ See demo here:
 
 # Getting Started  
 
-The SPA get data from Marvel's public Api.  You can check the Api's manual in:  <"https://developer.marvel.com/docs#!/public/getComicsCollection_get_6"></>
+The SPA get data from Marvel's public Api.  You can check the Api's manual in:  "https://developer.marvel.com/docs#!/public/getComicsCollection_get_6"
 
 # Built With
  - React
