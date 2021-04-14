@@ -9,7 +9,6 @@ export const SearchResults = () => {
   const { loading, characters } = useSearchCharacters()
   return (
     <>
-
         <>
           <div className="container-fluid mt-3">
               <h1 className="display-4 text-center">Characters</h1>

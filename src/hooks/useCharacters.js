@@ -9,30 +9,16 @@ export const useCharacters = () => {
 
   const [characters, setCharacters] = useState([])
 
-  const [charactersFiltered, setCharactersFiltered] = useState([])
-
-  /* const [nameStartsWith, setNameStartsWith] = useState([]) */
-
-  const [filter, setFiltered] = useState('')
+  const [search, setSearch] = useState('')
+  const [sort, setSort] = useState('')
 
   useEffect(() => {
-    getCharacters({})
+    getCharacters({ search, sort })
       .then(characters => {
         setCharacters(characters)
         setLoading(false)
       })
-  }, [])
-
-  useEffect(() => {
-    if (filter === '') return
-    console.log(filter)
-    setLoading(true)
-    getCharacters({ filter })
-      .then(characters => {
-        setLoading(false)
-        setCharactersFiltered(characters)
-      })
-  }, [])
+  }, [search, sort, setCharacters])
 
   useEffect(() => {
     if (page === 0) return
@@ -51,8 +37,9 @@ export const useCharacters = () => {
     loading,
     loadingNextPage,
     characters,
+    setCharacters,
     setPage,
-    setFiltered,
-    charactersFiltered
+    setSort,
+    setSearch
   }
 }

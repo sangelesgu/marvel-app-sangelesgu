@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react'
 import useIntersectionScreen from '../../hooks/useIntersectionScreen'
 import { Spinner } from '../spinner/Spinner'
 import { HeroCard } from './HeroCard'
-import { Search } from '../search/Search'
+import { Search } from '../filter/Search'
 import PropTypes from 'prop-types'
 import { charactersContext } from '../../contexts/CharactersContext'
 

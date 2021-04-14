@@ -3,7 +3,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { HeroList } from '../components/heroes/HeroList'
 import { HeroScreen } from '../components/heroes/HeroScreen'
-import { SearchResults } from '../components/search/SearchResults'
+import { SearchResults } from '../components/filter/SearchResults'
 import { Navbar } from '../layout/Navbar'
 
 export const DahboardRoutes = () => {

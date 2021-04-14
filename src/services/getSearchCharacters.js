@@ -6,8 +6,9 @@ const foundCharacters = resp => {
   return { results }
 }
 
-export const getSearchdCharacters = async ({ name } = {}) => {
-  const apiUrl = `${API_URL}?ts=${TS}&nameStartsWith=${name}&apikey=${API_KEY}&hash=${HASH}`
+export const getSearchCharacters = async ({ search, name } = {}) => {
+  console.log(search)
+  const apiUrl = `${API_URL}?ts=${TS}&nameStartsWith=${name}&apikey=${API_KEY}&hash=${HASH}&limit=50`
   return fetch(apiUrl)
     .then((res) => res.json())
     .then(foundCharacters)

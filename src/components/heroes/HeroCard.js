@@ -4,14 +4,14 @@ import './styles/HeroCard.css'
 import PropTypes from 'prop-types'
 export const HeroCard = ({ id, name, thumbnail }) => {
   return (
-                    <Link to={`/characters/${id}`} className="my-card">
-                        <img
-                            className="img"
-                            alt={name}
-                            src={`${thumbnail.path}.${thumbnail.extension}`}
-                        />
-                        <div className="profile-name">{name}</div>
-                    </Link>
+     <Link to={`/characters/${id}`} className="my-card">
+        <img
+          className="img"
+          alt={name}
+          src={`${thumbnail.path}.${thumbnail.extension}`}
+          />
+          <div className="profile-name">{name}</div>
+    </Link>
   )
 }
 

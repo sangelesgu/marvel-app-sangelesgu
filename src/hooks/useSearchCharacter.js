@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getSearchdCharacters } from '../services/getSearchdCharacters'
+
+import { getSearchCharacters } from '../services/getSearchCharacters'
 
 export const useSearchCharacters = () => {
   const [loading, setLoading] = useState(true)
@@ -8,9 +9,8 @@ export const useSearchCharacters = () => {
   const [characters, setCharacters] = useState([])
 
   const name = useParams()
-
   useEffect(() => {
-    getSearchdCharacters(name)
+    getSearchCharacters(name)
       .then(characters => {
         setCharacters(characters)
         setLoading(false)
