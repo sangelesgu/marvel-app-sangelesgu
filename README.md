@@ -2,7 +2,7 @@
 <h1>Marvel</h1>
 
 
-https://github.com/sangelesgu/marvel-app-sangelesgu/blob/main/public/Hnet-image.gif
+![Hnet-image (2)](https://user-images.githubusercontent.com/59829387/114761637-0f5be000-9d61-11eb-81cb-dc3542d8392b.gif)
 
 
 
