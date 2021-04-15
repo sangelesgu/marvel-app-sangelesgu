@@ -10,14 +10,16 @@
   box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
 }
 
-.select  {
+.select {
   border: 1px solid #aaa;
   border-radius: 7px;
   box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
 }
 
-.search input { text-indent: 32px;}
-.search .fa-search { 
+.search input {
+  text-indent: 32px;
+}
+.search .fa-search {
   position: absolute;
   top: 12px;
   left: 10px;

@@ -1,24 +1,23 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-import { getSearchCharacters } from '../services/getSearchCharacters'
+import { getSearchCharacters } from "../services/getSearchCharacters";
 
 export const useSearchCharacters = () => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
-  const [characters, setCharacters] = useState([])
+  const [characters, setCharacters] = useState([]);
 
-  const name = useParams()
+  const name = useParams();
   useEffect(() => {
-    getSearchCharacters(name)
-      .then(characters => {
-        setCharacters(characters)
-        setLoading(false)
-      })
-  }, [])
+    getSearchCharacters(name).then((characters) => {
+      setCharacters(characters);
+      setLoading(false);
+    });
+  }, []);
 
   return {
     loading,
-    characters
-  }
-}
+    characters,
+  };
+};
