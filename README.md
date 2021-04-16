@@ -1,7 +1,7 @@
 <h1>Marvel</h1>
 
 
-            ![Hnet-image (2)](https://user-images.githubusercontent.com/59829387/114761637-0f5be000-9d61-11eb-81cb-dc3542d8392b.gif)
+![Hnet-image (2)](https://user-images.githubusercontent.com/59829387/114761637-0f5be000-9d61-11eb-81cb-dc3542d8392b.gif)
 
 
 
