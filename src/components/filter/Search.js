@@ -1,27 +1,41 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
 import "./styles/Search.css";
 import { CustomSelect } from "./CustomSelect";
-import useFilter from "../../hooks/useFilterReducer";
+import filterReducer from "../../hooks/filterReducer";
+import { useHistory, useLocation } from "react-router-dom";
+import queryString from "query-string";
+import { charactersContext } from "../../contexts/CharactersContext";
 
-export const Search = ({ inititalSearch = "" }) => {
-  const history = useHistory();
-  const { search, changeSearch } = useFilter({ inititalSearch });
-
+export const Search = ({ inititalSearch = "", props }) => {
+  const { search, changeSearch } = filterReducer({ inititalSearch });
   const handleInputChange = (e) => {
     changeSearch({ search: e.target.value });
   };
+  const location = useLocation();
+  const { sort = "" } = queryString.parse(location.search);
+
+  const context = useContext(charactersContext);
+  const { setSearch } = context;
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(search);
-    history.push(`search/${search}`);
+    if (sort) {
+      history.push(`?query=${search}&sort=${sort}`);
+    } else {
+      history.push(`?query=${search}`);
+    }
   };
+
+  useEffect(() => {
+    setSearch(search);
+  }, [search, setSearch]);
 
   return (
     <div className="container mt-2">
       <div className="row">
-        <div className="col-6">
+        <div className="col-md-6 mt-1">
           <div className="search">
             <form onSubmit={handleSubmit}>
               <span className="fa fa-search" />
@@ -37,7 +51,7 @@ export const Search = ({ inititalSearch = "" }) => {
             </form>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-md-6 mt-1">
           <CustomSelect />
         </div>
       </div>

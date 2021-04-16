@@ -8,8 +8,10 @@ import { charactersContext } from "../../contexts/CharactersContext";
 
 export const HeroList = () => {
   const context = useContext(charactersContext);
+
   const { characters, loading, setPage } = context;
   const externalRef = useRef();
+
   const { isIntersect } = useIntersectionScreen({
     externalRef: loading ? null : externalRef,
     once: false,

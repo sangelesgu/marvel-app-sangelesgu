@@ -1,4 +1,6 @@
 import { useReducer } from "react";
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 
 const ACTIONS = {
   CHANGE_ORDER: "change_order",
@@ -12,7 +14,6 @@ const ACTIONS_REDUCERS = {
   }),
   [ACTIONS.CHANGE_SEARCH]: (state, action) => ({
     ...state,
-    times: state.times + 1,
     search: action.payload,
   }),
 };
@@ -22,13 +23,15 @@ const reducer = (state, action) => {
   return actionReducer ? actionReducer(state, action) : state;
 };
 
-export default function useFilter({
+export default function filterReducer({
   initialSearch = "",
-  initialOrder = "name",
+  initialOrder = "",
 } = {}) {
+  const location = useLocation();
+  const { sort = "" } = queryString.parse(location.search);
   const [{ sortBy, search }, dispatch] = useReducer(reducer, {
     search: initialSearch,
-    sortBy: initialOrder,
+    sortBy: sort,
   });
 
   return {

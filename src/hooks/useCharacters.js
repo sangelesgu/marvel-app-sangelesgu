@@ -9,15 +9,15 @@ export const useCharacters = () => {
 
   const [characters, setCharacters] = useState([]);
 
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("");
+  const [search, setSearch] = useState();
+  const [sortBy, setSortBy] = useState([]);
 
   useEffect(() => {
-    getCharacters({ search, sort }).then((characters) => {
+    getCharacters({ search, sortBy }).then((characters) => {
       setCharacters(characters);
       setLoading(false);
     });
-  }, [search, sort, setCharacters]);
+  }, [sortBy, search, setCharacters]);
 
   useEffect(() => {
     if (page === 0) return;
@@ -37,7 +37,7 @@ export const useCharacters = () => {
     characters,
     setCharacters,
     setPage,
-    setSort,
+    setSortBy,
     setSearch,
   };
 };

@@ -1,13 +1,13 @@
 <h1>Marvel</h1>
 
 
-![Hnet-image (2)](https://user-images.githubusercontent.com/59829387/114761637-0f5be000-9d61-11eb-81cb-dc3542d8392b.gif)
+            ![Hnet-image (2)](https://user-images.githubusercontent.com/59829387/114761637-0f5be000-9d61-11eb-81cb-dc3542d8392b.gif)
 
 
 
-Single Page Aplication of Marvel's characters created with Reatc, clean architecture, mobile first and cosuming data from Marvel Public REST API. 
+Single Page Aplication of Marvel's characters created with Reatc, clean architecture, responsive, and cosuming data from Marvel Public REST API. 
 
-As for deployment, I used Vercel since it integrates perfectly with git and facilitates using cli for continuous integration.
+For deployment, I have used Vercel due to its perfectly intregation with git and its easy user-friendliness cli for continuous integration.
 
 [See demo here](https://marvel-app-react-beezy-code-challenge-4bv7ha0zw-sangelesgu.vercel.app/characters)
 
@@ -39,9 +39,9 @@ The SPA get data from Marvel's public Api.  You can check the Api's manual [here
 
 `npm run build`
 
-### `npm run build` fails to minify
 
-# What to do in the chanllenge
+
+# What to do in the chanllenge ?
 
 The purpose of the challenge is to build a single page application with React, showing a list of items with some information in each of them, and another
 page showing detailed information of each item.

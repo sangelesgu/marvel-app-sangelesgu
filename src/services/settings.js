@@ -8,4 +8,5 @@ export const orderBy = [
   { value: "name", label: "Name A - Z" },
   { value: "-name", label: "Name Z - A" },
   { value: "modified", label: "Modified" },
+  { value: "-modified", label: "Modified - Descending" },
 ];

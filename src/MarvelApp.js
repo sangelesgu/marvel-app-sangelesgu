@@ -5,12 +5,14 @@ import "./MarvelApp.css";
 import { useCharacters } from "./hooks/useCharacters";
 
 export const MarvelApp = () => {
-  const { characters, loading, setPage, setSort } = useCharacters([]);
+  const { characters, loading, setPage, setSortBy, setSearch } = useCharacters(
+    []
+  );
 
   return (
     <div>
       <charactersContext.Provider
-        value={{ characters, loading, setPage, setSort }}
+        value={{ characters, loading, setPage, setSortBy, setSearch }}
       >
         <AppRouter />
       </charactersContext.Provider>
