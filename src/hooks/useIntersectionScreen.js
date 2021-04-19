@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 export default function useIntersectionScreen({
-  distance = "200px",
+  distance = "50px",
   externalRef,
   once = true,
 } = {}) {

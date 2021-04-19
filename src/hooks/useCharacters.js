@@ -9,7 +9,7 @@ export const useCharacters = () => {
 
   const [characters, setCharacters] = useState([]);
 
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const useCharacters = () => {
       setCharacters(characters);
       setLoading(false);
     });
-  }, [sortBy, search, setCharacters]);
+  }, [sortBy, setCharacters]);
 
   useEffect(() => {
     if (page === 0) return;

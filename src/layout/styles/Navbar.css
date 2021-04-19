@@ -43,6 +43,10 @@ a:hover {
   display: none;
 }
 
+img.logo {
+  margin-left: 20px;
+}
+
 @media (max-width: 858px) {
   .checkbtn {
     display: block;

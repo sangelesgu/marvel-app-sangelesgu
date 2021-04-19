@@ -6,12 +6,13 @@ const setup = (params) => {
   return result;
 };
 
+console.log(setup);
 test("should change search", () => {
   const result = setup();
 
   act(() => {
-    result.current.changeKeyword({ search: "spider" });
+    result.current.changeSearch({ search: "spider" });
   });
 
-  expect(result.current.keyword).toBe("spider");
+  expect(result.current.search).toBe("spider");
 });

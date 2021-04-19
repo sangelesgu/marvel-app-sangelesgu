@@ -13,11 +13,11 @@ export const Navbar = () => {
       </label>
       <Link className="navbar-brand" to="/">
         <img
-          className="d-inline-block align-text-top"
+          className="d-inline-block align-text-top logo"
           src={marvel}
           alt=""
           width="120"
-          height="40"
+          height="50"
         />
       </Link>
       <ul>

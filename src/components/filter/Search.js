@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import "./styles/Search.css";
 import { CustomSelect } from "./CustomSelect";
 import filterReducer from "../../hooks/filterReducer";
 import { useHistory, useLocation } from "react-router-dom";
 import queryString from "query-string";
-import { charactersContext } from "../../contexts/CharactersContext";
+// import { useSearchCharacters } from "../../hooks/useSearchCharacter";
 
-export const Search = ({ inititalSearch = "", props }) => {
+export const Search = ({ inititalSearch = "" }) => {
   const { search, changeSearch } = filterReducer({ inititalSearch });
   const handleInputChange = (e) => {
     changeSearch({ search: e.target.value });
@@ -14,23 +14,16 @@ export const Search = ({ inititalSearch = "", props }) => {
   const location = useLocation();
   const { sort = "" } = queryString.parse(location.search);
 
-  const context = useContext(charactersContext);
-  const { setSearch } = context;
-
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (sort) {
-      history.push(`?query=${search}&sort=${sort}`);
+      history.push(`/search/${search}/${sort}`);
     } else {
-      history.push(`?query=${search}`);
+      history.push(`/search/${search}`);
     }
   };
-
-  useEffect(() => {
-    setSearch(search);
-  }, [search, setSearch]);
 
   return (
     <div className="container mt-2">

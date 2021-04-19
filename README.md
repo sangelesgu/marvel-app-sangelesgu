@@ -5,11 +5,11 @@
 
 
 
-Single Page Aplication of Marvel's characters created with Reatc, clean architecture, responsive, and cosuming data from Marvel Public REST API. 
+Single Page Aplication of Marvel's characters created with React, responsive, and cosuming data from Marvel Public REST API. 
 
 For deployment, I have used Vercel due to its perfectly intregation with git and its easy user-friendliness cli for continuous integration.
 
-[See demo here](https://marvel-app-react-beezy-code-challenge-4bv7ha0zw-sangelesgu.vercel.app/characters)
+[See demo here](https://sangelesgu-marvel-app.vercel.app/)
 
 # Getting Started
 
@@ -59,6 +59,6 @@ There will be two principal screens in the app:
   could be a property from the items with any select or checkbox or
   a search field, or all of them.
 
-#### Listing:
+#### Detail: 
 
 - It will show detailed information of the selected element.

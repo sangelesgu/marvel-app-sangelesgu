@@ -6,19 +6,14 @@ const characters = (resp) => {
   return { results };
 };
 
-export const getCharacters = async ({
-  page,
-  search = "",
-  sortBy = "",
-} = {}) => {
+export const getCharacters = async ({ page, name = "", sortBy = "" } = {}) => {
   let apiUrl;
-
-  if (search === "") {
+  if (name === "") {
     apiUrl = `${API_URL}?ts=${TS}&apikey=${API_KEY}&hash=${HASH}&limit=${LIMIT}&offset=${
       page * LIMIT
     }&orderBy=${sortBy}`;
   } else {
-    apiUrl = `${API_URL}?ts=${TS}&nameStartsWith=${search}&apikey=${API_KEY}&hash=${HASH}&limit=${LIMIT}&offset=${
+    apiUrl = `${API_URL}?ts=${TS}&nameStartsWith=${name}&apikey=${API_KEY}&hash=${HASH}&limit=${LIMIT}&offset=${
       page * LIMIT
     }&orderBy=${sortBy}`;
   }
