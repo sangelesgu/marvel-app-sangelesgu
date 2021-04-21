@@ -19,9 +19,9 @@ export const Search = ({ inititalSearch = "" }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (sort) {
-      history.push(`/search/${search}/${sort}`);
+      history.replace(`/search/${search}?&sort=${sort}`);
     } else {
-      history.push(`/search/${search}`);
+      history.replace(`/search/${search}`);
     }
   };
 

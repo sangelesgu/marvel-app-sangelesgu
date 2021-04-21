@@ -18,7 +18,7 @@ export const CustomSelect = ({ initialOrder = "" }) => {
   const handleSelect = (e) => {
     changeOrder({ sortBy: e.target.value });
     if (query) {
-      history.push(`?query=${query}&?sort=${e.target.value}`);
+      history.replace(`search/${query}?&sort=${e.target.value}`);
     } else {
       history.push(`?sort=${e.target.value}`);
     }
